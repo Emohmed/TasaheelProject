@@ -1,6 +1,6 @@
 ﻿namespace TasaheelProject.Models
 {
-    public class user
+    public class Notification
     {
     }
 }
