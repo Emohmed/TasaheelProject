@@ -5,18 +5,19 @@ namespace TasaheelProject.Models {
 
 //  الملفات التي يرفعها المواطن
 
-    public class Attachment
+    public class AttachmentDocument
     {
-    public Guid Id { get; set; } = Guid.NewGuid();
-
-    [Required]
-        [MaxLength(50)]
+        [Key]
+        public Guid AttachmentDocumentId { get; set; } = Guid.NewGuid();
+  
+        
+        [Required, MaxLength(50)]
         //  اسم الملف مع الامتداد
         public string FileName { get; set; }
 
-    [Required]
+       
         //  نوع الملف (امتداد)
-        [MaxLength(50)]
+        [Required,MaxLength(50)]
         public string FileType { get; set; }
 
         //  حجم الملف بالبايت
@@ -24,20 +25,20 @@ namespace TasaheelProject.Models {
 
         public long Size { get; set; }
 
-    [Required]
+        [Required]
         //  مسار الملف على الخادم
         public string FilePath { get; set; }
 
       //  تاريخ رفع الملف
-    public DateTime UploadedAt { get; set; } = DateTime.UtcNow;
+        public DateTime UploadedAt { get; set; } = DateTime.UtcNow;
 
     //  الطلب المرتبط به الملف
-    public Guid RequestId { get; set; }
-    public Request Request { get; set; }
+        public Guid RequestId { get; set; }
+        public Request Request { get; set; }
 
     //  المواطن الذي رفع الملف
-    public Guid CitizenId { get; set; }
-    public Citizen Citizen { get; set; }
+        public Guid CitizenId { get; set; }
+        public Citizen Citizen { get; set; }
       
     }
 }

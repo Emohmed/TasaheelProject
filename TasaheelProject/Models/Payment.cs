@@ -1,11 +1,16 @@
-﻿namespace TasaheelProject.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace TasaheelProject.Models
 {
     public class Payment
     {
-        public Guid Id { get; set; } = Guid.NewGuid();
+        [Key]
+        public Guid PaymentId { get; set; } = Guid.NewGuid();
 
         public decimal Amount { get; set; }
+        [Required, MaxLength(15)]
         public string PaymentMethod { get; set; }
+        [Required, MaxLength(100)]
         public string TransactionId { get; set; }
 
         public DateTime PaidAt { get; set; } = DateTime.UtcNow;

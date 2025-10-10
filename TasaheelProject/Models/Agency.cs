@@ -1,10 +1,13 @@
-﻿namespace TasaheelProject.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace TasaheelProject.Models
 {
     public class Agency
     {
-        public Guid Id { get; set; }
+        [Key]
+        public Guid AgencyId { get; set; }
         public string Name { get; set; } = string.Empty; // مثل "إدارة الجوازات"
-        public string Code { get; set; } = string.Empty; // رمز فريد مثل PAS-001
+        public string Code { get; set; } = string.Empty; 
 
         public List<Branch> Branches { get; set; } = new();
         public List<Service> Services { get; set; } = new();

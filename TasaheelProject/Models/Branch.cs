@@ -1,14 +1,24 @@
 ﻿using Azure.Core;
+using System.ComponentModel.DataAnnotations;
 
 namespace TasaheelProject.Models
 {
     public class Branch
     {
-        public Guid Id { get; set; }
+        [Key]
+        public Guid BranchId { get; set; }
+
+        [Required, StringLength(8)]
+        public string Code { get; set; } = string.Empty;
+
+        [Required, StringLength(30)]
         public string Name { get; set; } = string.Empty; // مثل "فرع طرابلس"
+
+        [Required, StringLength(20)]
         public string City { get; set; } = string.Empty;
+
+        [Required, StringLength(20)]
         public string Address { get; set; } = string.Empty;
-        public string Phone { get; set; } = string.Empty;
         public bool IsActive { get; set; } = true;
 
         public Guid AgencyId { get; set; }

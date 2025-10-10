@@ -4,6 +4,7 @@ namespace TasaheelProject.Models
 {
     public class Request
     {
+        [Key]
         public Guid Id { get; set; } = Guid.NewGuid();
 
         [Required]
@@ -24,11 +25,9 @@ namespace TasaheelProject.Models
         public Branch Branch { get; set; } = null!;
 
         // المستندات التي رفعها المواطن مع الطلب
-        public List<Attachment> Attachments { get; set; } = new();
+        public List<AttachmentDocument> Attachments { get; set; } = new();
 
-        // المستند الناتج (مثل شهادة الميلاد الصادرة)
-        //public Guid? GeneratedDocumentId { get; set; }
-        //public OfficialDocument GeneratedDocument { get; set; }
+        
         }
 
        

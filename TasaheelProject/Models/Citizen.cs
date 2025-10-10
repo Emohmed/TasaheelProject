@@ -6,7 +6,8 @@ namespace TasaheelProject.Models
     // المواطن
     public class Citizen
     {
-        public Guid Id { get; set; } = Guid.NewGuid();
+        [Key]
+        public Guid CitizenId { get; set; } = Guid.NewGuid();
 
         [Required, MaxLength(13)]
         public string NationalId { get; set; }
@@ -16,17 +17,14 @@ namespace TasaheelProject.Models
 
         public DateTime DateOfBirth { get; set; }
 
-        [EmailAddress]
-        public string Email { get; set; }
-
-        [Phone]
-        public string PhoneNumber { get; set; }
+        [MaxLength(20)]
+        public string? PhoneNumber { get; set; }
 
         //  ربط بالمستخدم من Identity
-        public string ApplicationUserId { get; set; }
+        public Guid ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
 
-        // علاقات
+        //  علاقات طلبات المواطن
         public List<Request> Requests { get; set; } = new();
 
         //  الوثائق الرسمية الخاصة بالمواطن
