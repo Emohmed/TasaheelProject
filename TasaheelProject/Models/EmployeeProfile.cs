@@ -9,18 +9,18 @@ namespace TasaheelProject.Models
         public class EmployeeProfile
         {
             [Key]
-            public Guid EmployeeProfileId { get; set; } = Guid.NewGuid();
+            public string EmployeeProfileId { get; set; } 
 
-        [ForeignKey("ApplicationUser")]
+            [ForeignKey("Branch")]
 
-        public Guid? BranchId { get; set; }
+            public Guid? BranchId { get; set; }
             public Branch? Branch { get; set; }
 
             public DateTime HireDate { get; set; }
 
-            // 🔹 العلاقة مع ApplicationUser
+            //  العلاقة مع ApplicationUser
             [ForeignKey("ApplicationUser")]                                                                           
-        public Guid EmployeeId { get; set; }
+            public string EmployeeId { get; set; }
             public ApplicationUser ApplicationUser { get; set; }
         }
     }

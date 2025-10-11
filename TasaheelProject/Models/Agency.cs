@@ -9,8 +9,8 @@ namespace TasaheelProject.Models
         public string Name { get; set; } = string.Empty; // مثل "إدارة الجوازات"
         public string Code { get; set; } = string.Empty; 
 
-        public List<Branch> Branches { get; set; } = new();
-        public List<Service> Services { get; set; } = new();
+        public List<Branch> Branches { get; set; } 
+        public List<Service> Services { get; set; } 
     }
 
 }

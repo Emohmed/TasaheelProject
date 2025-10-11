@@ -1,5 +1,7 @@
 ﻿using Azure.Core;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TasaheelProject.Models
 {
@@ -21,9 +23,10 @@ namespace TasaheelProject.Models
         public string Address { get; set; } = string.Empty;
         public bool IsActive { get; set; } = true;
 
+        [ForeignKey("Agency")]
         public Guid AgencyId { get; set; }
         public Agency Agency { get; set; } = null!;
-
+        public List<EmployeeProfile> EmployeeProfiles { get; set; } = new();
         public List<Request> Requests { get; set; } = new();
     }
 

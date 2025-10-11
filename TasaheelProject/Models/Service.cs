@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TasaheelProject.Models
 {
@@ -18,6 +19,7 @@ namespace TasaheelProject.Models
         [Required]
         public decimal Fee { get; set; }
 
+        [ForeignKey("Agency")]
         // العلاقة مع الجهة
         public Guid AgencyId { get; set; }
         public Agency Agency { get; set; }

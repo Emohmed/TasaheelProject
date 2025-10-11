@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using TasaheelProject.Models;
 
 namespace TasaheelProject.Models {
@@ -32,13 +33,15 @@ namespace TasaheelProject.Models {
       //  تاريخ رفع الملف
         public DateTime UploadedAt { get; set; } = DateTime.UtcNow;
 
-    //  الطلب المرتبط به الملف
+        //  الطلب المرتبط به الملف
+        [ForeignKey("Request")]
         public Guid RequestId { get; set; }
         public Request Request { get; set; }
 
     //  المواطن الذي رفع الملف
-        public Guid CitizenId { get; set; }
-        public Citizen Citizen { get; set; }
+        [ForeignKey("CitizenProfile")]
+        public string CitizenId { get; set; }
+        public CitizenProfile Citizen { get; set; }
       
     }
 }

@@ -1,13 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using TasaheelProject.Models;
 
 namespace TasaheelProject.Models
 {
     // المواطن
-    public class Citizen
+    public class CitizenProfile
     {
         [Key]
-        public Guid CitizenId { get; set; } = Guid.NewGuid();
+        public  string CitizenId { get; set; }
 
         [Required, MaxLength(13)]
         public string NationalId { get; set; }
@@ -21,7 +22,8 @@ namespace TasaheelProject.Models
         public string? PhoneNumber { get; set; }
 
         //  ربط بالمستخدم من Identity
-        public Guid ApplicationUserId { get; set; }
+        [ForeignKey("ApplicationUser")]
+        public string ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
 
         //  علاقات طلبات المواطن
