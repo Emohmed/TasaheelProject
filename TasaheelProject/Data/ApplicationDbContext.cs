@@ -23,82 +23,9 @@ namespace TasaheelProject.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-/*
-            // Each ApplicationUser can have only one CitizenProfile
-            builder.Entity<ApplicationUser>()
-                .HasOne(u => u.Citizen)
-                .WithOne(c => c.ApplicationUser)
-                .HasForeignKey<CitizenProfile>(c => c.CitizenId);
 
-            // Each ApplicationUser can have only one EmployeeProfile
-            builder.Entity<ApplicationUser>()
-                .HasOne(u => u.Employee)
-                .WithOne(e => e.ApplicationUser)
-                .HasForeignKey<EmployeeProfile>(e => e.EmployeeId);
-
-            //
-            builder.Entity<AttachmentDocument>()
-                .HasOne(a => a.Request)
-                .WithMany(r => r.Attachments)
-                .HasForeignKey<Request>(a => a.RequestId);
-            //  هنا نربط بين الطلب والمواطن
-            builder.Entity<Request>()
-                .HasOne(r => r.Applicant)
-                .WithMany(c => c.Requests)
-                .HasForeignKey(r => r.CitizenId);
-            //  هنا نربط بين الطلب والخدمة
-            builder.Entity<Request>()
-                .HasOne(r => r.Service)
-                .WithMany(s => s.Requests)
-                .HasForeignKey(r => r.ServiceId);
-            //  هنا نربط بين الطلب والفرع
-            builder.Entity<Request>()
-                .HasOne(r => r.Branch)
-                .WithMany(b => b.Requests)
-                .HasForeignKey(r => r.BranchId);
-            //  هنا نربط بين الطلب والدفع
-            builder.Entity<Request>()
-                .HasOne(r => r.Payment)
-                .WithOne(p => p.Request)
-                .HasForeignKey<Payment>(r => r.PaymentId);
-
-
-            // Customize the ASP.NET Identity model and override the defaults if needed.
-            // For example, you can rename the ASP.NET Identity table names and more.
-            // Add your customizations after calling base.OnModelCreating(builder);}
-            builder.Entity<ApplicationUser>()
-                .HasIndex(u => u.NationalId)
-                .IsUnique();
-            builder.Entity<CitizenProfile>()
-                .HasIndex(u => u.NationalId)
-                .IsUnique();
-            builder.Entity<AttachmentDocument>()
-                .HasOne(ad => ad.Request)
-                .WithMany(r => r.Attachments)
-                .HasForeignKey(ad => ad.RequestId)
-                .OnDelete(DeleteBehavior.Cascade);
-            builder.Entity<Request>()
-                .HasMany(r => r.Notifications)
-                .WithOne(n => n.Request)
-                .HasForeignKey(n => n.RequestId)
-                .OnDelete(DeleteBehavior.Cascade);
-            builder.Entity<Request>()
-                .HasOne(r => r.Applicant)
-                .WithMany(c => c.Requests)
-                .HasForeignKey(r => r.CitizenId)
-                .OnDelete(DeleteBehavior.Cascade);
-            builder.Entity<Service>()
-.                HasMany(s => s.Requests)
-                .WithOne(r => r.Service)
-                .HasForeignKey(r => r.ServiceId)
-                .OnDelete(DeleteBehavior.Cascade);
-            builder.Entity<Branch>()
-                .HasMany(b => b.Requests)
-                .WithOne(r => r.Branch)
-                .HasForeignKey(r => r.BranchId)
-                .OnDelete(DeleteBehavior.Cascade);
-*/
-            // GitHub Copilot suggested the following change:
+            // علاقة ApplicationUser مع CitizenProfile (واحد إلى واحد)
+            
             builder.Entity<ApplicationUser>()
              .HasOne(u => u.Citizen)
              .WithOne(c => c.ApplicationUser)
