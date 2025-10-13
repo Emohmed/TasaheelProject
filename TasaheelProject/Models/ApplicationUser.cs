@@ -20,13 +20,16 @@
 
             public bool IsActive { get; set; } = true;
 
+
         //  إذا كان المواطن مسجلاً في جدول Citizen
-          
+
             public CitizenProfile? Citizen { get; set; }
 
         //  إذا كان الموظف مسجلاً في جدول Employee
            
             public EmployeeProfile? Employee { get; set; }
+            public List<Notification> Notifications { get; set; } = new();  //  الاشعارات>
+
 
 
 

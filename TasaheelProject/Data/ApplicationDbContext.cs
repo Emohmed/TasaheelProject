@@ -83,13 +83,13 @@ namespace TasaheelProject.Data
                 .WithOne(a => a.Request)
                 .HasForeignKey(a => a.RequestId)
                 .OnDelete(DeleteBehavior.Restrict);
-           
-            // علاقة Request مع Notification (واحد إلى كثير)
-            builder.Entity<Request>()
+
+            // علاقة ApplicationUser مع Notification (واحد إلى كثير)
+            builder.Entity<ApplicationUser>()
                 .HasMany(r => r.Notifications)
-                .WithOne(n => n.Request)
-                .HasForeignKey(n => n.RequestId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .WithOne(n => n.ApplicationUser)
+                .HasForeignKey(n => n.ApplicationUserId)
+                .OnDelete(DeleteBehavior.Cascade);
             // Unique constraints
            
             builder.Entity<CitizenProfile>()

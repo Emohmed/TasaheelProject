@@ -30,7 +30,6 @@ namespace TasaheelProject.Models
 
         // المستندات التي رفعها المواطن مع الطلب
         public List<AttachmentDocument> Attachments { get; set; } = new();
-        public List<Notification> Notifications { get; set; } = new();  //  الاشعارات>
         
         }
 
