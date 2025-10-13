@@ -10,7 +10,7 @@ namespace TasaheelProject.Models
         [Key]
         public  string CitizenId { get; set; }
 
-        [Required, MaxLength(13)]
+        [Required, MaxLength(12)]
         public string NationalId { get; set; }
 
         [Required, MaxLength(100)]
@@ -29,8 +29,7 @@ namespace TasaheelProject.Models
         //  علاقات طلبات المواطن
         public List<Request> Requests { get; set; } = new();
 
-        //  الوثائق الرسمية الخاصة بالمواطن
-        //public List<OfficialDocument> OfficialDocuments { get; set; } = new();
+      
     }
 
 }

@@ -8,7 +8,7 @@ namespace TasaheelProject.Models
     public class Branch
     {
         [Key]
-        public Guid BranchId { get; set; }
+        public Guid BranchId { get; set; }= Guid.NewGuid();
 
         [Required, StringLength(8)]
         public string Code { get; set; } = string.Empty;

@@ -91,11 +91,13 @@ namespace TasaheelProject.Data
                 .HasForeignKey(n => n.RequestId)
                 .OnDelete(DeleteBehavior.Restrict);
             // Unique constraints
-            builder.Entity<ApplicationUser>()
-                .HasIndex(u => u.NationalId)
-                .IsUnique();
+           
             builder.Entity<CitizenProfile>()
                 .HasIndex(c => c.NationalId)
+                .IsUnique();
+
+            builder.Entity<EmployeeProfile>()
+                .HasIndex(e=>e.EmployeeNumber)
                 .IsUnique();
 
 

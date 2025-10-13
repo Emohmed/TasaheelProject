@@ -23,7 +23,7 @@ namespace TasaheelProject.Models {
 
         //  حجم الملف بالبايت
 
-
+        [Range(0, 10 * 1024 * 1024)]
         public long Size { get; set; }
 
         [Required]
@@ -38,10 +38,7 @@ namespace TasaheelProject.Models {
         public Guid RequestId { get; set; }
         public Request Request { get; set; }
 
-    //  المواطن الذي رفع الملف
-        [ForeignKey("CitizenProfile")]
-        public string CitizenId { get; set; }
-        public CitizenProfile Citizen { get; set; }
+    
       
     }
 }

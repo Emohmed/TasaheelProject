@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TasaheelProject.Data;
 
@@ -11,9 +12,11 @@ using TasaheelProject.Data;
 namespace TasaheelProject.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251013143236_v2")]
+    partial class v2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -211,6 +214,11 @@ namespace TasaheelProject.Data.Migrations
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
 
+                    b.Property<string>("NationalId")
+                        .IsRequired()
+                        .HasMaxLength(13)
+                        .HasColumnType("nvarchar(13)");
+
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -245,6 +253,9 @@ namespace TasaheelProject.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("NationalId")
+                        .IsUnique();
+
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
 
@@ -261,6 +272,10 @@ namespace TasaheelProject.Data.Migrations
                     b.Property<Guid>("AttachmentDocumentId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CitizenId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("FileName")
                         .IsRequired()
@@ -286,6 +301,8 @@ namespace TasaheelProject.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("AttachmentDocumentId");
+
+                    b.HasIndex("CitizenId");
 
                     b.HasIndex("RequestId");
 
@@ -350,8 +367,8 @@ namespace TasaheelProject.Data.Migrations
 
                     b.Property<string>("NationalId")
                         .IsRequired()
-                        .HasMaxLength(12)
-                        .HasColumnType("nvarchar(12)");
+                        .HasMaxLength(13)
+                        .HasColumnType("nvarchar(13)");
 
                     b.Property<string>("PhoneNumber")
                         .HasMaxLength(20)
@@ -377,32 +394,14 @@ namespace TasaheelProject.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("EmployeeNumber")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
-
                     b.Property<DateTime>("HireDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("JobTitle")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("NationalId")
-                        .IsRequired()
-                        .HasMaxLength(12)
-                        .HasColumnType("nvarchar(12)");
 
                     b.HasKey("EmployeeProfileId");
 
                     b.HasIndex("BranchId");
 
                     b.HasIndex("EmployeeId")
-                        .IsUnique();
-
-                    b.HasIndex("EmployeeNumber")
                         .IsUnique();
 
                     b.ToTable("Employees");
@@ -430,8 +429,8 @@ namespace TasaheelProject.Data.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.HasKey("NotificationId");
 
@@ -595,11 +594,19 @@ namespace TasaheelProject.Data.Migrations
 
             modelBuilder.Entity("TasaheelProject.Models.AttachmentDocument", b =>
                 {
+                    b.HasOne("TasaheelProject.Models.CitizenProfile", "CitizenProfile")
+                        .WithMany()
+                        .HasForeignKey("CitizenId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("TasaheelProject.Models.Request", "Request")
                         .WithMany("Attachments")
                         .HasForeignKey("RequestId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("CitizenProfile");
 
                     b.Navigation("Request");
                 });

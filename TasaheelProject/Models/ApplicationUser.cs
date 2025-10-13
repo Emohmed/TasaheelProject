@@ -13,8 +13,7 @@
             public string FullName { get; set; }
 
             
-            [Required,MaxLength(13)]
-            public string NationalId { get; set; } 
+           
 
             [Required,MaxLength(20)]
             public string RoleType { get; set; } = "Citizen"; // Admin / Employee / Citizen

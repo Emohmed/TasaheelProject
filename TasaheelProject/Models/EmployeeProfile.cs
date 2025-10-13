@@ -9,17 +9,27 @@ namespace TasaheelProject.Models
         public class EmployeeProfile
         {
             [Key]
-            public string EmployeeProfileId { get; set; } 
+            public string EmployeeProfileId { get; set; }
+            public DateTime HireDate { get; set; }
 
-            [ForeignKey("Branch")]
+        [Required, MaxLength(12)]
+            public string NationalId { get; set; }
+
+        [Required, MaxLength(10)]
+           public string EmployeeNumber { get; set; } // EmployeeNumber
+
+        [Required, MaxLength(50)]
+            public string JobTitle { get; set; }
+
+
+         [ForeignKey("Branch")]
 
             public Guid? BranchId { get; set; }
             public Branch? Branch { get; set; }
 
-            public DateTime HireDate { get; set; }
 
             //  العلاقة مع ApplicationUser
-            [ForeignKey("ApplicationUser")]                                                                           
+         [ForeignKey("ApplicationUser")]                                                                           
             public string EmployeeId { get; set; }
             public ApplicationUser ApplicationUser { get; set; }
         }

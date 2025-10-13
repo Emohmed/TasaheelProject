@@ -10,7 +10,7 @@ namespace TasaheelProject.Models
 
         public string ReferenceNumber { get; set; } = $"REQ-{DateTime.UtcNow.Ticks}";
 
-        [ForeignKey("CitizenProfile")]
+        [ForeignKey("CitizenUser")]
         public string CitizenId { get; set; }
         public CitizenProfile CitizenUser  { get; set; }
 

@@ -5,8 +5,9 @@ namespace TasaheelProject.Models
 {
     public class Notification
     {
-        public Guid NotificationId { get; set; }
-        [Required, MaxLength(20)]
+        public Guid NotificationId { get; set; }= Guid.NewGuid();
+
+        [Required, MaxLength(50)]
         public string Title { get; set; }
 
         [Required, MaxLength(300)]
