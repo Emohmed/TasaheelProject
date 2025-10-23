@@ -15,8 +15,8 @@ namespace TasaheelProject.Models
         public DateTime CreatedDate { get; set; }
         public bool IsRead { get; set; }= false;
 
-        [ForeignKey("ApplicationUser")]
-        public string ApplicationUserId { get; set; }
-        public ApplicationUser ApplicationUser { get; set; } 
+        [ForeignKey("Request")]
+        public Guid RequestId { get; set; }
+        public Request Request { get; set; }
     }
 }

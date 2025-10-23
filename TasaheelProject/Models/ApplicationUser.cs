@@ -28,7 +28,6 @@
         //  إذا كان الموظف مسجلاً في جدول Employee
            
             public EmployeeProfile? Employee { get; set; }
-            public List<Notification> Notifications { get; set; } = new();  //  الاشعارات>
 
 
 
