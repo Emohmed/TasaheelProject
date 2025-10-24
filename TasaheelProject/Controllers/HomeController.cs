@@ -4,7 +4,19 @@ namespace TasaheelProject.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Home()
+        public IActionResult HomePage()
+        {
+            return View();
+        }
+        public IActionResult About()
+        {
+            return View();
+        }
+        public IActionResult ContactUs()
+        {
+            return View();
+        }
+        public IActionResult Login()
         {
             return View();
         }
