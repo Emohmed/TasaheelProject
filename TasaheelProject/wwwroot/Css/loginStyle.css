@@ -1,0 +1,104 @@
+﻿:root {
+    --main-blue: #0d6efd;
+    --light-bg: #e9f0fb;
+}
+
+body {
+    background-color: var(--light-bg);
+    font-family: 'Tahoma', sans-serif;
+}
+
+/* شعار تساهيل */
+.logo {
+    width: 130px;
+    margin: 40px auto 10px;
+    display: block;
+}
+
+h2 {
+    text-align: center;
+    color: var(--main-blue);
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+
+.login-card {
+    background: #f0f5fc;
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 400px;
+    margin: auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+}
+
+.icon-box {
+    width: 80px;
+    height: 80px;
+    background-color: #003e9e;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: -60px auto 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+    .icon-box img {
+        width: 45px;
+    }
+
+.form-control {
+    border-radius: 15px;
+    padding: 12px;
+    text-align: right;
+}
+
+    .form-control:focus {
+        border-color: var(--main-blue);
+        box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+    }
+
+.forgot-link {
+    color: var(--main-blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.forgot-link:hover
+{
+        text-decoration: underline;
+}
+
+.btn-login
+{
+    width: 100%;
+    border-radius: 15px;
+    background-color: var(--main-blue);
+    color: white;
+    font-weight: 600;
+    padding: 10px;
+}
+
+.btn-login:hover 
+{
+        background-color: #084bcc;
+ }
+
+.register-text 
+{
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.95rem;
+}
+
+.register-text a 
+{
+        color: var(--main-blue);
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+.register-text a:hover
+{
+            text-decoration: underline;
+}
