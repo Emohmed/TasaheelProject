@@ -133,4 +133,95 @@
 .footer a:hover {
             text-decoration: underline;
         }
+/*splash css*/
+/* 1. تثبيت شاشة البداية لتغطي الشاشة بالكامل */
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* اللون الخلفي الرمادي/الأزرق الفاتح من الصورة */
+    background-color: #e6ebf5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* لضمان ظهورها فوق كل شيء */
+    opacity: 1;
+    transition: opacity 0.5s ease-out, visibility 0.5s ease-out; /* حركة الإخفاء */
+}
 
+    /* حالة الإخفاء التي ستُطبق بواسطة JavaScript */
+    .splash-screen.hidden {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+/* 2. حاوية الدوائر (للتوسيط) */
+.logo-circle-container {
+    position: relative;
+    width: 200px; /* حجم الحاوية */
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 3. الدائرة الخارجية المتوهجة (تأثير النبض) */
+.outer-circle {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    /* لون أزرق باهت للدائرة الخارجية */
+    background-color: rgba(189, 203, 224, 0.4);
+    /* تطبيق الحركة: نبض، مدتها 2 ثانية، تكرار لانهائي */
+    animation: pulse 2s infinite ease-in-out;
+}
+
+/* 4. الدائرة الداخلية (البيضاء) التي تحمل الشعار */
+.inner-circle {
+    position: relative;
+    width: 75%;
+    height: 75%;
+    border-radius: 50%;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 5. تنسيق الشعار والنص داخل الدائرة */
+.logo-text {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1b2a48; /* لون النص الداكن */
+}
+
+    .logo-text img {
+        /* يمكنك استبدال هذا برمز CSS أو SVG الفعلي */
+        width: 60px;
+        height: 60px;
+        margin-bottom: 5px;
+    }
+
+
+/* تعريف الحركة (Keyframes) للنبض */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: scale(1.1); /* تكبير الدائرة قليلاً */
+        opacity: 0.2; /* خفض الشفافية لإعطاء تأثير الإشعاع */
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+}
