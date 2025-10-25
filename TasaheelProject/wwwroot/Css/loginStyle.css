@@ -15,7 +15,7 @@ body {
     display: block;
 }
 
-h2 {
+.h2 {
     text-align: center;
     color: var(--main-blue);
     margin-bottom: 40px;
