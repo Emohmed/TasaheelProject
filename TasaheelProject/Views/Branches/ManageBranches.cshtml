@@ -1,0 +1,107 @@
+﻿@* @model IEnumerable<TasaheelProject.Models.Branch>
+
+@{
+    ViewData["Title"] = "إدارة الفروع";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-3 text-center">قائمة الفروع</h2>
+
+    <div class="text-end mb-3">
+        <a asp-action="CreateBranch" class="btn btn-primary">➕ إضافة فرع جديد</a>
+    </div>
+
+    <table class="table table-striped table-hover text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>الكود</th>
+                <th>الاسم</th>
+                <th>المدينة</th>
+                <th>العنوان</th>
+                <th>الحالة</th>
+                <th>الجهة</th>
+                <th>العمليات</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Code</td>
+                    <td>@item.Name</td>
+                    <td>@item.City</td>
+                    <td>@item.Address</td>
+                    <td>@(item.IsActive ? "نشط" : "متوقف")</td>
+                    <td>@item.Agency?.Name</td>
+                    <td>
+                        <a asp-action="EditBranch" asp-route-id="@item.BranchId" class="btn btn-sm btn-warning">تعديل</a>
+                        <form asp-action="DeleteBranch" asp-route-id="@item.BranchId" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('هل أنت متأكد من الحذف؟');">حذف</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div> *@
+
+@model List<TasaheelProject.Models.Branch>
+@{
+    ViewData["Title"] = "إدارة فروع الجهة";
+    var agencyName = ViewBag.AgencyName as string;
+    var agencyId = (Guid)ViewBag.AgencyId;
+}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">🏢 إدارة فروع الجهة: @agencyName</h2>
+
+    <div class="d-flex justify-content-between mb-3">
+        <a asp-action="CreateBranch" asp-route-agencyId="@agencyId" class="btn btn-success">
+            ➕ إضافة فرع جديد
+        </a>
+        @* <a asp-controller="Agencies" asp-action="ManageAgencies" class="btn btn-secondary">
+            🔙 رجوع إلى الجهات
+        </a> *@
+    </div>
+
+    @if (Model.Any())
+    {
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>الكود</th>
+                    <th>الاسم</th>
+                    <th>المدينة</th>
+                    <th>العنوان</th>
+                    <th>نشط</th>
+                    <th>العمليات</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var b in Model)
+                {
+                    <tr>
+                        <td>@b.Code</td>
+                        <td>@b.Name</td>
+                        <td>@b.City</td>
+                        <td>@b.Address</td>
+                        <td>
+                            @(b.IsActive ? "✅" : "❌")
+                        </td>
+                        <td>
+                            <a asp-action="EditBranch" asp-route-id="@b.BranchId" class="btn btn-sm btn-warning">✏️ تعديل</a>
+                            <form asp-action="DeleteBranch" asp-route-id="@b.BranchId" method="post" style="display:inline;">
+                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('هل أنت متأكد من الحذف؟')">🗑 حذف</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-info text-center">لا توجد فروع لهذه الجهة بعد.</div>
+    }
+</div>
+

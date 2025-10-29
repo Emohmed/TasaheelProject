@@ -60,6 +60,10 @@
 
                 Tasaheel
             </a>
+
+
+
+            
             @*
                  احفظ 
                  للتنقل بين الصفحات
@@ -72,6 +76,12 @@
 
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav align-items-lg-center gap-lg-3">
+                    <li class="nav-item">
+                        @* احفظ
+                        للتنقل بين الصفحات
+                        ~/Home/About *@
+                        <a class="nav-link" href="~/Admin/AdminHome"><i class="bi bi-info-circle-fill"></i> AdminHome </a>
+                    </li>
                     <li class="nav-item">
                         @* احفظ
                         للتنقل بين الصفحات
@@ -90,6 +100,7 @@
                         ~/Home/ContactUs *@
                         <a class="nav-link" href="~/Home/ContactUs"><i class="bi bi-telephone-fill"></i> الاتصال بنا</a>
                     </li>
+                   
                     @* <li class="nav-item">
                         <a class="nav-link btn-logout" href="#"><i class="bi bi-box-arrow-right"></i> الخروج</a>
                     </li> *@
@@ -168,9 +179,9 @@
             }, 500);
         }
 
-        // تعيين مؤقت (Delay) لمدة 3000 ملي ثانية (3 ثواني) قبل استدعاء دالة الإخفاء
+        // تعيين مؤقت (Delay) لمدة 1500 ملي ثاني قبل استدعاء دالة الإخفاء
         window.onload = function() {
-            setTimeout(hideSplashScreen, 3000); // 3000ms = 3 ثواني
+            setTimeout(hideSplashScreen, 1500); // 1500ms =  للتاخير ثواني1
         };
     </script>
 </body>

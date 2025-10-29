@@ -9,8 +9,7 @@
     // المستخدم داخل النظام (مواطن / موظف / مشرف)
     public class ApplicationUser : IdentityUser
         {
-            [Required, MaxLength(100)]
-            public string FullName { get; set; }
+           
 
             
            

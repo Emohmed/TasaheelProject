@@ -1,0 +1,88 @@
+﻿@* @model TasaheelProject.Models.Branch
+@{
+    ViewData["Title"] = "إضافة فرع جديد";
+    var agencyName = ViewBag.AgencyName as string;
+    var agencyId = ViewBag.AgencyId as Guid?;
+}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">➕ إضافة فرع جديد للجهة: <span class="text-primary">@agencyName</span></h2>
+
+    <form asp-action="CreateBranch" method="post" class="card p-4 shadow-sm">
+        <input type="hidden" asp-for="AgencyId" value="@agencyId" />
+
+        <div class="mb-3">
+            <label asp-for="Code" class="form-label">الكود</label>
+            <input asp-for="Code" class="form-control" />
+            <span asp-validation-for="Code" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label">اسم الفرع</label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="City" class="form-label">المدينة</label>
+            <input asp-for="City" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Address" class="form-label">العنوان</label>
+            <input asp-for="Address" class="form-control" />
+        </div>
+
+        <div class="form-check mb-3">
+            <input asp-for="IsActive" class="form-check-input" />
+            <label asp-for="IsActive" class="form-check-label">نشط</label>
+        </div>
+
+        <button type="submit" class="btn btn-success">حفظ</button>
+        <a asp-action="ManageBranches" asp-route-agencyId="@agencyId" class="btn btn-secondary">رجوع</a>
+    </form>
+</div> *@
+@model TasaheelProject.Models.Branch
+@{
+    ViewData["Title"] = "إضافة فرع جديد";
+    var agencyName = ViewBag.AgencyName as string;
+    var agencyId = (Guid)ViewBag.AgencyId;
+}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">➕ إضافة فرع جديد إلى الجهة: @agencyName</h2>
+
+    <form asp-action="CreateBranch" method="post" class="card p-4 shadow-sm">
+        <input type="hidden" asp-for="AgencyId" value="@agencyId" />
+
+        <div class="mb-3">
+            <label asp-for="Code" class="form-label">الكود</label>
+            <input asp-for="Code" class="form-control" />
+            <span asp-validation-for="Code" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label">الاسم</label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="City" class="form-label">المدينة</label>
+            <input asp-for="City" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Address" class="form-label">العنوان</label>
+            <input asp-for="Address" class="form-control" />
+        </div>
+
+        <div class="form-check mb-3">
+            <input asp-for="IsActive" class="form-check-input" />
+            <label asp-for="IsActive" class="form-check-label">نشط</label>
+        </div>
+
+        <button type="submit" class="btn btn-success">💾 حفظ</button>
+        <a asp-action="ManageBranches" asp-route-agencyId="@agencyId" class="btn btn-secondary">🔙 رجوع</a>
+    </form>
+</div>

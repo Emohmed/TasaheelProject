@@ -1,0 +1,46 @@
+﻿@model TasaheelProject.Models.Branch
+@{
+    ViewData["Title"] = "تعديل الفرع";
+    var agencies = ViewBag.Agencies as List<TasaheelProject.Models.Agency>;
+}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">✏️ تعديل بيانات الفرع</h2>
+
+    <form asp-action="EditBranch" method="post" class="card p-4 shadow-sm">
+        <input type="hidden" asp-for="BranchId" />
+
+        <div class="mb-3">
+            <label asp-for="Code" class="form-label">الكود</label>
+            <input asp-for="Code" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label">الاسم</label>
+            <input asp-for="Name" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="City" class="form-label">المدينة</label>
+            <input asp-for="City" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Address" class="form-label">العنوان</label>
+            <input asp-for="Address" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="AgencyId" class="form-label">الجهة</label>
+            <select asp-for="AgencyId" class="form-select" asp-items="@(new SelectList(agencies, "AgencyId", "Name"))"></select>
+        </div>
+
+        <div class="form-check mb-3">
+            <input asp-for="IsActive" class="form-check-input" />
+            <label asp-for="IsActive" class="form-check-label">نشط</label>
+        </div>
+
+        <button type="submit" class="btn btn-warning">تحديث</button>
+        <a asp-action="ManageBranches" class="btn btn-secondary">إلغاء</a>
+    </form>
+</div>

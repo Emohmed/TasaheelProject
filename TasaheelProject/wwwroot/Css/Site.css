@@ -1,0 +1,367 @@
+﻿/* ------------------- المتغيرات والألوان الأساسية ------------------- */
+/*:root {
+    --sidebar-width: 100px;*/ /* عرض شريط التنقل الجانبي */
+    /*--appbar-height: 60px;*/ /* ارتفاع شريط التنقل العلوي */
+    /*--primary-blue: #1b2a48;*/ /* لون النص الأساسي */
+    /*--light-gray-bg: #f0f3f8;*/ /* لون الخلفية الرئيسية */
+    /*--active-item-bg: #e6ebf5;*/ /* خلفية العنصر النشط في القائمة الجانبية */
+/*}*/
+
+/* ------------------- الجسم العام والـ App Bar ------------------- */
+/*body {
+    background-color: var(--light-gray-bg);
+    min-height: 100vh;
+}
+
+.app-header {
+    z-index: 1030;
+    height: var(--appbar-height);
+}*/
+
+/* تنسيق شريط البحث */
+/*.search-container {
+    width: 250px;
+    height: 40px;
+}
+
+.search-input {
+    border-radius: 50px !important;
+    background-color: var(--light-gray-bg) !important;
+    border: none !important;
+    text-align: right;
+    padding-right: 40px !important;
+}
+
+.search-icon {
+    position: absolute;
+    right: 5px;
+    height: 100%;
+    z-index: 5;
+    background-color: transparent !important;
+    border: none !important;
+    color: #6c757d;
+}*/
+
+/* ------------------- الشريط الجانبي (Desktop Sidebar) ------------------- */
+/*.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: var(--sidebar-width);
+    height: 100%;
+    padding-top: var(--appbar-height);
+    background-color: #fff;
+    border-left: 1px solid #dee2e6;
+    z-index: 1020;
+    text-align: center;
+}*/
+
+    /* تنسيق روابط القائمة الجانبية */
+    /*.sidebar .nav-link {
+        color: var(--primary-blue);
+        display: flex;
+        flex-direction: column;*/ /* الأيقونة والنص فوق بعض */
+        /*align-items: center;
+        padding: 0.8rem 0.5rem;
+        font-size: 0.85rem;
+        white-space: nowrap;
+    }
+
+        .sidebar .nav-link i {
+            margin: 0 !important;
+            font-size: 2.2rem !important;
+            color: #495057;*/ /* لون الأيقونات غير النشطة */
+        /*}*/
+
+    /* تنسيق العنصر النشط */
+    /*.sidebar .active-item {
+        background-color: var(--active-item-bg);
+        border-right: 4px solid #0d6efd;*/ /* خط أزرق بجانب العنصر */
+        /*color: #0d6efd;
+    }
+
+        .sidebar .active-item .nav-link {
+            font-weight: bold;
+            color: #0d6efd;
+        }
+
+            .sidebar .active-item .nav-link i {
+                color: #0d6efd;*/ /* لون الأيقونة النشطة */
+            /*}*/
+
+/* ------------------- منطقة المحتوى الرئيسية ------------------- */
+
+/*.main-content {*/
+    /* مساحة هامش بمقدار عرض الشريط الجانبي */
+    /*margin-right: var(--sidebar-width);
+    margin-top: var(--appbar-height);
+    padding: 20px;
+    min-height: calc(100vh - var(--appbar-height));
+}*/
+
+/* ------------------- التجاوب (Mobile & Tablet) ------------------- */
+/*@media (max-width: 767.98px) {*/
+    /* على الجوال: إزالة الهامش الجانبي للمحتوى */
+    /*.main-content {
+        margin-right: 0;
+    }*/
+    /* على الجوال: الشريط الجانبي يظهر كـ Offcanvas */
+    /*.sidebar {
+        display: none !important;
+    }
+}*/
+
+
+/* ------------------- تنسيقات محتوى العرض ------------------- */
+/*.content-card-placeholder {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.main-logo-placeholder {*/
+    /* Placeholder for the large central icon */
+    /*width: 200px;
+    height: 200px;
+    opacity: 0.3;*/ /* لون باهت كما في الصورة */
+    /* يجب استبدال هذا برمز SVG أو صورة الشعار الفعلي */
+    /*background-image: url('data:image/svg+xml;utf8,...');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}*/
+/*\
+    الكود الثاني
+*/
+
+/* ------------------- المتغيرات والألوان الأساسية (تبقى كما هي) ------------------- */
+/*:root {
+    --sidebar-width: 100px;
+    --appbar-height: 60px;
+    --primary-blue: #1b2a48;
+    --active-blue: #0d6efd;*/ /* اللون الأزرق النشط */
+    /*--light-gray-bg: #f0f3f8;
+    --active-item-bg: #e6ebf5;
+}*/
+/* ... باقي تنسيقات الـ body و الـ app-header تبقى كما هي ... */
+
+
+/* ------------------- الشريط الجانبي (Desktop Sidebar) - التنسيق المُحسن ------------------- */
+/*.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: var(--sidebar-width);
+    height: 100%;
+    padding-top: var(--appbar-height);
+    background-color: #fff;
+    border-left: 1px solid #dee2e6;
+    z-index: 1020;
+}
+
+.sidebar-nav {
+    text-align: center;
+}*/
+
+/* تنسيق الروابط (العنصر الأهم) */
+/*.sidebar .nav-link {
+    color: var(--primary-blue);
+    display: flex;
+    flex-direction: column;*/ /* ترتيب العناصر عمودياً (أيقونة ثم نص) */
+    /*align-items: center;*/ /* توسيط أفقي */
+    /*padding: 0.8rem 0.5rem;
+    font-size: 0.8rem;*/ /* تصغير حجم الخط */
+    /*white-space: nowrap;
+    position: relative;
+    gap: 2px;*/ /* مسافة بسيطة بين الأيقونة والنص */
+/*}*/
+
+    /* تنسيق الأيقونة */
+    /*.sidebar .nav-link i {
+        margin: 0 !important;
+        font-size: 2.2rem !important;
+        color: #495057;*/ /* لون الأيقونات غير النشطة */
+        /* إضافة مسافة بين الأيقونة والعنصر التالي */
+        /*margin-bottom: 2px;
+    }*/
+
+    /* تنسيق النص */
+    /*.sidebar .nav-link span {
+        display: block;
+        line-height: 1.2;
+    }*/
+
+    /* تنسيق الشارة (Badge) لتكون دائماً محاذية للنص */
+    /*.sidebar .nav-link .badge {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        font-size: 0.65rem;
+    }*/
+
+    /* تنسيق العنصر النشط (Active Item) */
+    /*.sidebar .nav-link.active {
+        background-color: var(--active-item-bg);
+        border-right: 4px solid var(--active-blue);
+        color: var(--active-blue);
+        font-weight: 600;
+    }
+
+        .sidebar .nav-link.active i {
+            color: var(--active-blue);*/ /* لون الأيقونة النشطة */
+        /*}*/
+
+
+/* ------------------- منطقة المحتوى الرئيسية (تبقى كما هي) ------------------- */
+/*.main-content {
+    margin-right: var(--sidebar-width);
+    margin-top: var(--appbar-height);
+    padding: 20px;
+    min-height: calc(100vh - var(--appbar-height));
+}*/
+
+/* ------------------- التجاوب (Mobile & Tablet) (تبقى كما هي) ------------------- */
+/*@media (max-width: 767.98px) {
+    .main-content {
+        margin-right: 0;
+    }
+}*/
+
+
+
+
+
+
+
+
+
+:root {
+    --sidebar-width: 90px;
+    --appbar-height: 60px;
+    --primary-blue: #1b2a48;
+    --light-gray-bg: #f4f6fa;
+    --active-item-bg: #e6ebf5;
+}
+
+.body {
+    background-color: var(--light-gray-bg);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ---------------- Header ---------------- */
+.app-header {
+    height: var(--appbar-height);
+    background-color: #fff;
+    border-bottom: 1px solid #dee2e6;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1030;
+}
+
+    .app-header .navbar-brand {
+        font-weight: bold;
+        color: var(--primary-blue);
+    }
+
+    .app-header .nav-item i {
+        font-size: 1.4rem;
+        cursor: pointer;
+    }
+
+.profile-section {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+    .profile-section span {
+        font-weight: 500;
+        color: #333;
+    }
+
+    .profile-section img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+/* ---------------- Sidebar ---------------- */
+.sidebar {
+    position: fixed;
+    top: var(--appbar-height);
+    right: 0;
+    width: var(--sidebar-width);
+    height: calc(100vh - var(--appbar-height));
+    background-color: #fff;
+    border-left: 1px solid #dee2e6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1rem;
+    transition: all 0.3s ease-in-out;
+    z-index: 1025;
+}
+
+    .sidebar.collapsed {
+        transform: translateX(100%);
+    }
+
+    .sidebar .nav-link {
+        color: var(--primary-blue);
+        text-align: center;
+        font-size: 0.85rem;
+        margin: 10px 0;
+        padding: 10px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: all 0.2s;
+    }
+
+        .sidebar .nav-link i {
+            font-size: 1.9rem;
+            margin-bottom: 3px;
+            color: #495057;
+        }
+
+        .sidebar .nav-link.active,
+        .sidebar .nav-link:hover {
+            background-color: var(--active-item-bg);
+            border-right: 4px solid #0d6efd;
+            color: #0d6efd;
+            font-weight: 600;
+        }
+
+            .sidebar .nav-link.active i {
+                color: #0d6efd;
+            }
+
+/* ---------------- Main Content ---------------- */
+.main-content {
+    margin-right: var(--sidebar-width);
+    margin-top: var(--appbar-height);
+    padding: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+.sidebar.collapsed + .main-content {
+    margin-right: 0;
+}
+
+@media (max-width: 991.98px) {
+    .main-content {
+        margin-right: 0;
+    }
+
+    .sidebar {
+        transform: translateX(100%);
+    }
+
+        .sidebar.show {
+            transform: translateX(0);
+        }
+}

@@ -1,0 +1,14 @@
+﻿@model TasaheelProject.Data.Viewmodel.AgencyViewModel
+
+<h2>هل أنت متأكد من حذف هذه الجهة؟</h2>
+
+<div>
+    <h4>@Model.Name</h4>
+    <p>الكود: @Model.Code</p>
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="AgencyId" />
+    <button type="submit" class="btn btn-danger">حذف</button>
+    <a asp-action="AdminHome" class="btn btn-secondary">إلغاء</a>
+</form>
