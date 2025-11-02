@@ -4,7 +4,7 @@ namespace TasaheelProject.Controllers
 {
     public class CitizinController : Controller
     {
-        public IActionResult CitizinHome()
+        public IActionResult CitizenHome()
         {
             return View();
         }

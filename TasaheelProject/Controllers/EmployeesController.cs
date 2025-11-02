@@ -4,7 +4,7 @@ namespace TasaheelProject.Controllers
 {
     public class EmployeesController : Controller
     {
-        public IActionResult Index()
+        public IActionResult EmployeeHome()
         {
             return View();
         }
