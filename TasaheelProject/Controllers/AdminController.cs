@@ -58,47 +58,56 @@ namespace TasaheelProject.Controllers
 
                     _context.Add(agency);
                     await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(AdminHome));
+                    return RedirectToAction(nameof(AgencyManagment));
                 }
                 return View(model);
             }
 
-            // GET: /Agencies/Edit/{id}
-            //public async Task<IActionResult> EditAgency(Guid id)
-            //{
-            //    var agency = await _context.Agencies.FindAsync(id);
-            //    if (agency == null) return NotFound();
+        [HttpGet]
+        public IActionResult EditAgency()
+        {
+            return View();
+        }
 
-            //    var viewModel = new AgencyViewModel
-            //    {
-            //        AgencyId = agency.AgencyId,
-            //        Name = agency.Name,
-            //        Code = agency.Code
-            //    };
-
-            //    return View(viewModel);
-            //}
-
-            // POST: /Agencies/Edit
             [HttpPost]
-            [ValidateAntiForgeryToken]
-            public async Task<IActionResult> EditAgency(AgencyViewModel model)
+             [ValidateAntiForgeryToken]
+            public async Task<IActionResult> EditAgency(Guid id)
             {
-                if (ModelState.IsValid)
-                {
-                    var agency = await _context.Agencies.FindAsync(model.AgencyId);
-                    if (agency == null) return NotFound();
+            var agency = await _context.Agencies.FindAsync(id);
+            if (agency == null) return NotFound();
 
-                    agency.Name = model.Name;
-                    agency.Code = model.Code;
+            var viewModel = new AgencyViewModel
+            {
+                AgencyId = agency.AgencyId,
+                Name = agency.Name,
+                Code = agency.Code
+            };
+            _context.Update(viewModel);
+            await _context.SaveChangesAsync();
 
-                    _context.Update(agency);
-                    await _context.SaveChangesAsync();
-
-                    return RedirectToAction(nameof(AdminHome));
-                }
-                return View(model);
+            return View(viewModel);
             }
+
+        //// POST: /Agencies/Edit
+        //[HttpPost]
+        //    [ValidateAntiForgeryToken]
+        //    public async Task<IActionResult> EditAgency(AgencyViewModel model)
+        //    {
+        //        if (ModelState.IsValid)
+        //        {
+        //            var agency = await _context.Agencies.FindAsync(model.AgencyId);
+        //            if (agency == null) return NotFound();
+
+        //            agency.Name = model.Name;
+        //            agency.Code = model.Code;
+
+        //            _context.Update(agency);
+        //            await _context.SaveChangesAsync();
+
+        //            return RedirectToAction(nameof(AdminHome));
+        //        }
+        //        return View(model);
+        //    }
 
             // GET: /Agencies/Delete/{id}
             public async Task<IActionResult> DeleteAgencies(Guid id)
