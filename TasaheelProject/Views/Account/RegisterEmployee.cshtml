@@ -1,0 +1,83 @@
+﻿@model TasaheelProject.Data.Viewmodel.EmployeeViewmodel
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="register-page-container">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8 col-sm-10 col-12">
+
+                <div class="register-box p-4 p-md-5 rounded-3">
+
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h1 class="fw-bold mb-0">حساب جديد</h1>
+
+                    </div>
+
+
+
+                    <form asp-controller="Account" asp-action="RegisterEmployee" method="post">
+
+
+
+    <div class="mb-4">
+        <input type="text" asp-for="Name" class="form-control form-control-lg text-end" placeholder="الاسم" required>
+    </div>
+    <div class="mb-4">
+        <input type="text" asp-for="JobTitle" class="form-control form-control-lg text-end" placeholder="المسمى الوظيفي" required>
+    </div>
+    <div class="mb-4">
+        <input type="date" asp-for="HireDate" class="form-control form-control-lg text-end" placeholder="التاريخ" required>
+    </div>
+    <div class="mb-4">
+        <input type="number" asp-for="EmployeeNumber" class="form-control form-control-lg text-end" placeholder="رقم الموظف" required>
+    </div>
+
+    <div class="mb-4">
+        <input type="number" asp-for="NationalId" class="form-control form-control-lg text-end" placeholder="رقم الوطني" required>
+    </div>
+
+    <div class="mb-4">
+        <input type="email" asp-for="Email" class="form-control form-control-lg text-end" placeholder="Email" required>
+    </div>
+
+    <div class="mb-4 input-group input-group-lg">
+        <input type="password" asp-for="password" class="form-control text-end border-end-0" placeholder="كلمة المرور" required>
+        <span class="input-group-text bg-white border-start-0 cursor-pointer password-toggle">
+            <i class="bi bi-eye-fill text-muted"></i>
+        </span>
+    </div>
+
+
+
+    <div class="d-grid mb-3">
+        <button type="submit" class="btn btn-primary btn-lg custom-register-btn">إنشاء حساب جديد</button>
+    </div>
+</form>
+
+                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    // JavaScript بسيط لإظهار/إخفاء كلمة المرور (ديناميكية)
+    document.querySelector('.password-toggle').addEventListener('click', function() {
+        const passwordInput = document.getElementById('Password');
+        const icon = this.querySelector('i');
+
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            icon.classList.remove('bi-eye-fill');
+            icon.classList.add('bi-eye-slash-fill');
+        } else {
+            passwordInput.type = 'password';
+            icon.classList.remove('bi-eye-slash-fill');
+            icon.classList.add('bi-eye-fill');
+        }
+    });
+</script>

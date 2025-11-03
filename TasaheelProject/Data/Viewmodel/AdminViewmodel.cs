@@ -12,6 +12,5 @@ namespace TasaheelProject.Data.Viewmodel
 
         [Required, MaxLength(12),DataType(DataType.Password)]
         public string Password { get; set; }
-        public string EmailConfirmed { get; set; } 
     }
 }

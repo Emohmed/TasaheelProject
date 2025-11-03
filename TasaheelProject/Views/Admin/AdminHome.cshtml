@@ -1,31 +1,131 @@
-﻿@model IEnumerable<TasaheelProject.Data.Viewmodel.AgencyViewModel>
+﻿@{
 
-<h2>قائمة الجهات</h2>
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
 
-<a asp-action="CreateAgencies" class="btn btn-primary">إضافة جهة جديدة</a>
 
-<table class="table table-bordered mt-3">
-    <thead>
-        <tr>
-            <th>الاسم</th>
-            <th>الكود</th>
-            <th>العمليات</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.Name</td>
-                <td>@item.Code</td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.AgencyId" class="btn btn-warning btn-sm">تعديل</a>
-                    <a asp-action="DeleteConfirmed" asp-route-id="@item.AgencyId" class="btn btn-danger btn-sm">حذف</a>
-                    <a asp-controller="Branches" asp-action="ManageBranches" asp-route-agencyId="@item.AgencyId" class="btn btn-primary btn-sm">
-                        إدارة الفروع
-                    </a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+
+
+
+
+
+@{
+    // يمكنك تعيين عنوان الصفحة هنا
+    ViewData["Title"] = "الصفحة الرئيسية للإدارة";
+}
+
+<div class="admin-home-container d-flex align-items-center justify-content-center">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-10 col-md-8 col-lg-6">
+
+                <h1 class="text-center fw-bold mb-5 d-none d-md-block">لوحة التحكم الرئيسية</h1>
+
+                <div class="row row-cols-2 g-4 justify-content-center">
+
+                    <div class="col">
+                        <a href="#" class="menu-card text-decoration-none shadow-sm rounded-3 d-block text-center p-3">
+                            <div class="icon-wrapper mb-2">
+                                <i class="bi bi-envelope-open-fill display-5 text-warning"></i>
+                            </div>
+                            <h5 class="card-title fw-bold text-dark">إدارة الطلبات</h5>
+                        </a>
+                    </div>
+
+                    <div class="col">
+                        <a href="#" class="menu-card text-decoration-none shadow-sm rounded-3 d-block text-center p-3">
+                            <div class="icon-wrapper mb-2">
+                                <i class="bi bi-people-fill display-5 text-danger"></i>
+                            </div>
+                            <h5 class="card-title fw-bold text-dark">إدارة المستخدمين</h5>
+                        </a>
+                    </div>
+
+                    <div class="col">
+                        <a href="~/Admin/AgencyManagment" class="menu-card text-decoration-none shadow-sm rounded-3 d-block text-center p-3">
+                            <div class="icon-wrapper mb-2">
+                                <i class="bi bi-building-fill display-5 text-info"></i>
+                            </div>
+                            <h5 class="card-title fw-bold text-dark">إدارة المؤسسات</h5>
+                        </a>
+                    </div>
+
+                    <div class="col text-center">
+                        <a href="#" class="menu-card text-decoration-none shadow-sm rounded-3 d-block text-center p-3">
+                            <div class="icon-wrapper mb-2">
+                                <i class="bi bi-gear-fill display-5 text-secondary"></i>
+                            </div>
+                            <h5 class="card-title fw-bold text-dark">الإعدادات</h5>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+
+/* ------------------- التوسيط والتجاوب ------------------- */
+.admin-home-container {
+    /* هذه الخصائص تضمن توسيط محتوى الصفحة عمودياً */
+    min-height: calc(100vh - 120px); /* تخصيص الارتفاع (120px هو مثال لارتفاع الرأس والتذييل) */
+    width: 100%;
+}
+
+/* ------------------- تنسيق البطاقات (Menu Cards) ------------------- */
+.menu-card {
+    /* لجعل البطاقة مربعة قدر الإمكان (باستخدام نسبة الحشو) */
+    aspect-ratio: 1 / 1; /* نسبة العرض إلى الارتفاع 1:1 */
+    background-color: #ffffff;
+    border: 1px solid #e9ecef;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex; /* لتحسين محاذاة الأيقونة والنص */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-card:hover {
+    transform: translateY(-5px); /* تأثير رفع بسيط عند المرور بالماوس */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* تنسيق حاوية الأيقونة */
+.icon-wrapper {
+    /* يمكن إضافة تنسيق دائري أو خلفية هنا إذا لزم الأمر */
+}
+
+/* تنسيق الأيقونات */
+.menu-card i {
+    /* تأكيد حجم الأيقونات */
+    font-size: 3rem !important;
+}
+
+/* تنسيق عنوان البطاقة */
+.menu-card .card-title {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    color: #495057 !important;
+}
+
+/* ------------------- التجاوب (لشاشات الجوال) ------------------- */
+.media (max-width: 576px) {
+    .menu-card {
+        padding: 1.5rem !important;
+    }
+    .menu-card .card-title {
+        font-size: 0.9rem;
+    }
+}
+</style>
+
+
+
+
+
+
+
+
+@*  *@

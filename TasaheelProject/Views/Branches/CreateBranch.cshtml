@@ -48,12 +48,16 @@
     var agencyName = ViewBag.AgencyName as string;
     var agencyId = (Guid)ViewBag.AgencyId;
 }
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
 
 <div class="container mt-4">
     <h2 class="text-center mb-4">➕ إضافة فرع جديد إلى الجهة: @agencyName</h2>
 
-    <form asp-action="CreateBranch" method="post" class="card p-4 shadow-sm">
+    <form asp-controller="" asp-action="CreateBranch" method="post" class="card p-4 shadow-sm">
         <input type="hidden" asp-for="AgencyId" value="@agencyId" />
+        <span asp-validation-for="AgencyId" class="text-danger"></span>
 
         <div class="mb-3">
             <label asp-for="Code" class="form-label">الكود</label>
@@ -70,16 +74,22 @@
         <div class="mb-3">
             <label asp-for="City" class="form-label">المدينة</label>
             <input asp-for="City" class="form-control" />
+            <span asp-validation-for="City" class="text-danger"></span>
+
         </div>
 
         <div class="mb-3">
             <label asp-for="Address" class="form-label">العنوان</label>
             <input asp-for="Address" class="form-control" />
+            <span asp-validation-for="Address" class="text-danger"></span>
+
         </div>
 
         <div class="form-check mb-3">
             <input asp-for="IsActive" class="form-check-input" />
             <label asp-for="IsActive" class="form-check-label">نشط</label>
+            <span asp-validation-for="IsActive" class="text-danger"></span>
+
         </div>
 
         <button type="submit" class="btn btn-success">💾 حفظ</button>

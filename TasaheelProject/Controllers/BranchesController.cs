@@ -94,7 +94,7 @@ namespace TasaheelProject.Controllers
                 await _context.SaveChangesAsync();
 
                 // ✅ العودة إلى صفحة إدارة الفروع الخاصة بهذه الجهة
-                return RedirectToAction("Manage", new { agencyId = branch.AgencyId });
+                return RedirectToAction("ManageBranches", new { agencyId = branch.AgencyId });
             }
 
             ViewBag.AgencyName = _context.Agencies.Find(branch.AgencyId)?.Name;

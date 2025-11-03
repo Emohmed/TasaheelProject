@@ -1,0 +1,34 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@model IEnumerable<TasaheelProject.Data.Viewmodel.AgencyViewModel>
+
+<h2>قائمة الجهات</h2>
+
+<a asp-action="CreateAgencies" class="btn btn-primary">إضافة جهة جديدة</a>
+
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>الاسم</th>
+            <th>الكود</th>
+            <th>العمليات</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Code</td>
+                <td>
+                    <a asp-action="EditAgency" asp-route-AgencyId="@item.AgencyId" class="btn btn-warning btn-sm">تعديل</a>
+                    <a asp-action="DeleteConfirmed" asp-route-id="@item.AgencyId" class="btn btn-danger btn-sm">حذف</a>
+                    <a asp-controller="Branches" asp-action="ManageBranches" asp-route-agencyId="@item.AgencyId" class="btn btn-primary btn-sm">
+                        إدارة الفروع
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

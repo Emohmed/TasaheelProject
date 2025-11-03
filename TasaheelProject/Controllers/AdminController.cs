@@ -17,8 +17,14 @@ namespace TasaheelProject.Controllers
                 _context = context;
             }
 
-            // GET: /Agencies
-            public async Task<IActionResult> AdminHome()
+        // GET: /Agencies
+
+        public IActionResult AdminHome() 
+        {
+            return View();
+        
+        }
+            public async Task<IActionResult> AgencyManagment()
             {
                 var agencies = await _context.Agencies
                     .Select(a => new AgencyViewModel
@@ -31,14 +37,14 @@ namespace TasaheelProject.Controllers
                 return View(agencies);
             }
 
-            // GET: /Agencies/Create
-            public IActionResult CreateAgencies()
-            {
-                return View();
-            }
+        // GET: /Agencies/Create
+        public IActionResult CreateAgencies()
+        {
+            return View();
+        }
 
-            // POST: /Agencies/Create
-            [HttpPost]
+        // POST: /Agencies/Create
+        [HttpPost]
             [ValidateAntiForgeryToken]
             public async Task<IActionResult> CreateAgencies(AgencyViewModel model)
             {
@@ -58,25 +64,25 @@ namespace TasaheelProject.Controllers
             }
 
             // GET: /Agencies/Edit/{id}
-            public async Task<IActionResult> Edit(Guid id)
-            {
-                var agency = await _context.Agencies.FindAsync(id);
-                if (agency == null) return NotFound();
+            //public async Task<IActionResult> EditAgency(Guid id)
+            //{
+            //    var agency = await _context.Agencies.FindAsync(id);
+            //    if (agency == null) return NotFound();
 
-                var viewModel = new AgencyViewModel
-                {
-                    AgencyId = agency.AgencyId,
-                    Name = agency.Name,
-                    Code = agency.Code
-                };
+            //    var viewModel = new AgencyViewModel
+            //    {
+            //        AgencyId = agency.AgencyId,
+            //        Name = agency.Name,
+            //        Code = agency.Code
+            //    };
 
-                return View(viewModel);
-            }
+            //    return View(viewModel);
+            //}
 
             // POST: /Agencies/Edit
             [HttpPost]
             [ValidateAntiForgeryToken]
-            public async Task<IActionResult> Edit(AgencyViewModel model)
+            public async Task<IActionResult> EditAgency(AgencyViewModel model)
             {
                 if (ModelState.IsValid)
                 {
