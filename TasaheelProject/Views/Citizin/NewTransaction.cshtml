@@ -1,0 +1,75 @@
+﻿
+@model List<TasaheelProject.Models.Agency>
+
+@{
+    Layout = "~/Views/Shared/_CitizenLayout.cshtml";
+}
+
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h2 class="display-5 text-primary fw-bold">📋 المؤسسات المتاحة</h2>
+        <p class="lead text-muted">اضغط على الجهة لعرض الخدمات التي تقدمها.</p>
+    </div>
+
+    <div class="row">
+        @if (Model != null && Model.Count > 0)
+        {
+            @foreach (var agency in Model)
+            {
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card shadow-sm h-100 border-0 transition-shadow">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title text-dark mb-3 fw-semibold">@agency.Name</h5>
+                            
+                         
+
+                            <!-- ملاحظة: يتم تمرير AgencyId كـ branchId في الـ Route -->
+                            <a asp-controller="Citizin"
+                               asp-action="ServicesByAgency"
+                               asp-route-AgencyId="@agency.AgencyId"
+                               class="btn btn-outline-primary btn-block mt-3">
+                                <i class="bi bi-list-task me-2"></i> عرض الخدمات
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-12">
+                <div class="alert alert-info text-center py-4 border-0 shadow-sm">
+                    <h4>لا توجد جهات حكومية مسجلة حالياً.</h4>
+                    <p class="mb-0">يرجى التحقق من قاعدة البيانات.</p>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<!-- يمكنك إضافة تنسيقات CSS إضافية هنا لتحسين شكل البطاقات -->
+<style>
+    /* إضافة تأثير حركة على البطاقة عند المرور بالماوس */
+    .transition-shadow:hover {
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+        transform: translateY(-2px);
+        transition: all 0.3s ease;
+    }
+    .card-title {
+        border-bottom: 2px solid #007bff;
+        padding-bottom: 5px;
+        display: inline-block;
+    }
+
+ 
+    .card-header h5 {
+        font-size: 1.25rem;
+    }
+
+    .card-text {
+        min-height: 50px; /* ضمان ارتفاع موحد للبطاقات */
+    }
+
+    .card-footer {
+        padding: 0.75rem 1.25rem;
+    }
+</style>

@@ -16,8 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Views\Account\" />
     <Folder Include="Views\Agencies\" />
-    <Folder Include="Views\Employees\" />
     <Folder Include="Views\Services\" />
     <Folder Include="Views\Requests\" />
   </ItemGroup>

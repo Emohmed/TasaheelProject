@@ -1,0 +1,214 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model TasaheelProject.Data.Viewmodel.CitizinViewmodel
+@* <div class="container contact-page-container py-5">
+    <div class="row w-100 justify-content-center">
+        <div class="col-lg-8 col-md-10 contact-box p-4 shadow-sm">
+            <h2 class="mb-4 text-center">تسجيل حساب جديد</h2>
+            <form>
+                <div class="mb-3">
+                    <label for="fullName" class="form-label">الاسم الكامل</label>
+                    <input type="text" class="form-control form-control-lg" id="fullName" placeholder="ادخل اسمك الكامل">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">البريد الإلكتروني</label>
+                    <input type="email" class="form-control form-control-lg" id="email" placeholder="ادخل بريدك الإلكتروني">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">كلمة المرور</label>
+                    <input type="password" class="form-control form-control-lg" id="password" placeholder="ادخل كلمة المرور">
+                </div>
+                <div class="mb-3">
+                    <label for="confirmPassword" class="form-label">تأكيد كلمة المرور</label>
+                    <input type="password" class="form-control form-control-lg" id="confirmPassword" placeholder="اعد ادخال كلمة المرور">
+                </div>
+                <button type="submit" class="btn btn-info w-100">تسجيل</button>
+            </form>
+        </div>
+    </div>
+</div>
+     *@
+
+
+@* ملحوظة للمطور: هذا الكود هو محتوى الصفحة (View) 
+   ويفترض أنه سيتم عرضه ضمن ملف Layout رئيسي يحتوي على CSS و Bootstrap.
+*@
+<style>
+
+    /* الألوان المستخدمة:
+       لون الزر/الرابط الأساسي: #0d6efd (أزرق Bootstrap)
+       لون خلفية الصفحة: رمادي/أزرق فاتح #e6ebf5
+    */
+
+    .body {
+        /* تطبيق الخلفية الزرقاء الفاتحة المتدرجة المشابهة للصورة */
+        background: linear-gradient(180deg, #f5f5f5 0%, #e6ebf5 100%);
+        min-height: 100vh;
+        display: flex; /* لضمان توسيط المحتوى عمودياً */
+        align-items: center;
+    }
+
+    .register-page-container {
+        width: 100%;
+    }
+
+    .register-box {
+        background-color: transparent; /* خلفية شفافة لتماثل الصورة */
+        /* يمكن إزالة الشادو إذا كانت الخلفية شفافة تماماً */
+    }
+
+    /* تنسيق حقول الإدخال لتكون أكبر */
+    .form-control-lg {
+        border-radius: 0.5rem;
+        height: 55px;
+        border: 1px solid #ced4da; /* حدود خفيفة */
+    }
+
+    /* تنسيق زر إنشاء حساب جديد */
+    .custom-register-btn {
+        background-color: #0d6efd;
+        border-color: #0d6efd;
+        font-weight: bold;
+        padding: 10px 0;
+        font-size: 1.1rem;
+        border-radius: 0.5rem;
+    }
+
+    /* تنسيق حقل كلمة المرور والأيقونة */
+    .input-group-lg .form-control,
+    .input-group-lg .input-group-text {
+        height: 55px; /* لضمان تطابق ارتفاع الحقل والأيقونة */
+        border-radius: 0.5rem;
+    }
+
+    .input-group-lg .form-control {
+        /* يضمن أن حقل الإدخال يأخذ معظم المساحة ويحافظ على الحدود */
+        border-top-left-radius: 0.5rem !important;
+        border-bottom-left-radius: 0.5rem !important;
+        border-right: none;
+    }
+
+    .input-group-lg .input-group-text {
+        /* تنسيق خاص لأيقونة كلمة المرور */
+        border-left: none;
+        border-top-right-radius: 0.5rem !important;
+        border-bottom-right-radius: 0.5rem !important;
+        cursor: pointer;
+    }
+
+    /* تنسيق الشعار Placeholder */
+    .logo-placeholder {
+        /* يجب استبدال هذا التنسيق بكود SVG الفعلي */
+        max-width: 150px;
+        height: 150px;
+        margin: 0 auto;
+        /* إضافة لون خفيف للرمز */
+        background-color: #ced4da;
+        border-radius: 50%;
+        /* إذا استخدمت SVG الفعلي، ستستخدم خصائص width/height/fill مباشرة */
+    }
+
+    /* الألوان الخاصة بالروابط في نهاية الصفحة */
+    .text-info {
+        color: #0d6efd !important;
+    }
+
+    .text-primary {
+        color: #0d6efd !important;
+    }
+
+    /* **ضمان التجاوب على جميع الشاشات** */
+   
+        /* تنسيقات خاصة بالهواتف الصغيرة */
+        .register-box
+
+    {
+        padding: 15px !important;
+    }
+
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    }
+</style>
+
+
+<div class="register-page-container">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8 col-sm-10 col-12">
+
+                <div class="register-box p-4 p-md-5 rounded-3">
+
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h1 class="fw-bold mb-0">حساب جديد</h1>
+                       
+                    </div>
+
+                   
+
+                    <form asp-controller="Account" asp-action="RegisterCitizen" method="post">
+
+                        <div class="mb-4">
+                            <input type="text" asp-for="NationalId" class="form-control form-control-lg text-end"  placeholder="الرقم الوطني" required>
+                        </div>
+
+                        <div class="mb-4">
+                            <input type="text"asp-for="FullName" class="form-control form-control-lg text-end"   placeholder="الاسم" required>
+                        </div>
+                        <div class="mb-4">
+                            <input type="date" asp-for="DateOfBirth" class="form-control form-control-lg text-end" placeholder="تاريخ الميلاد" required>
+                        </div>
+                        <div class="mb-4">
+                            <input type="number" asp-for="PhoneNumber" class="form-control form-control-lg text-end" placeholder="رقم الهاتف" required>
+                        </div>
+                        <div class="mb-4">
+                            <input type="email" asp-for="Email" class="form-control form-control-lg text-end" placeholder="Email" required>
+                        </div>
+                        <div class="mb-4 input-group input-group-lg">
+                            <input type="password" asp-for="Password"  class="form-control text-end border-end-0"  placeholder="كلمة المرور" required>
+                            <span class="input-group-text bg-white border-start-0 cursor-pointer password-toggle">
+                                <i class="bi bi-eye-fill text-muted"></i>
+                            </span>
+                        </div>
+
+                        
+
+                        <div class="d-grid mb-3">
+                            <button type="submit" class="btn btn-primary btn-lg custom-register-btn">إنشاء حساب جديد</button>
+                        </div>
+                    </form>
+
+                    <div class="text-center mt-4">
+                        <p class="mb-0 text-dark">
+                            لديك حساب؟
+                            <a href="~/Home/login" class="text-info fw-bold text-decoration-none">قم بتسجيل الدخول</a>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // JavaScript بسيط لإظهار/إخفاء كلمة المرور (ديناميكية)
+    document.querySelector('.password-toggle').addEventListener('click', function() {
+        const passwordInput = document.getElementById('Password');
+        const icon = this.querySelector('i');
+
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            icon.classList.remove('bi-eye-fill');
+            icon.classList.add('bi-eye-slash-fill');
+        } else {
+            passwordInput.type = 'password';
+            icon.classList.remove('bi-eye-slash-fill');
+            icon.classList.add('bi-eye-fill');
+        }
+    });
+</script>

@@ -4,13 +4,11 @@ namespace TasaheelProject.Data.Viewmodel
 {
     public class LoginViewmodel
     {
-        [Required,MaxLength(100)]
-        public string Email {  get; set; }
+        [Required, MaxLength(100)]
+        public string Email { get; set; }
 
-        [Required, MaxLength(12)]
+        [Required, MaxLength(6)]
         public string Password { get; set; }
 
-        [Required, MaxLength(12)]
-        public string NationalId { get; set; }
     }
 }

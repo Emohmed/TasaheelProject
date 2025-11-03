@@ -2,7 +2,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 
 }
-    <head>
+@model TasaheelProject.Data.Viewmodel.LoginViewmodel
+
+<head>
 @* <link href="~/css/loginstyle.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/Css/Style.css">
 
@@ -226,16 +228,18 @@
             <img src="https://cdn-icons-png.flaticon.com/512/295/295128.png" alt="User Lock">
         </div>
 
-        <form>
+        <form asp-controller="Account"  asp-action="Login" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="mb-3">
-                <input type="text" class="form-control" placeholder="الرقم الوطني" required>
+                <input type="email" asp-for="Email" class="form-control" placeholder="Email" required>
+                <span asp-validation-for="Email" class="text-danger"></span>
             </div>
-            <div class="mb-2 position-relative">
-                <input type="password" class="form-control" placeholder="كلمة المرور" id="passwordInput" required>
-
-                <button type="button" class="btn position-absolute end-0 top-0 mt-1 me-2 text-secondary" onclick="togglePassword()" style="border: none; background: none;">
-                    <i class="bi bi-eye"></i>
-                </button>
+            <div class="mb-4 input-group input-group-lg">
+                <input type="password" asp-for="Password" class="form-control text-end border-end-0"  placeholder="كلمة المرور" required>
+                <span asp-validation-for="Password" class="text-danger"></span>
+                <span class="input-group-text bg-white border-start-0 cursor-pointer password-toggle">
+                    <i class="bi bi-eye-fill text-muted"></i>
+                </span>
             </div>
             <div class="text-end mb-3">
                 <a href="#" class="forgot-link">نسيت كلمة المرور؟</a>
@@ -244,7 +248,7 @@
             <button type="submit" class="btn btn-login">تسجيل الدخول</button>
 
             <div class="register-text">
-                ليس لديك حساب؟ <a href="~/Account/Register">ابدأ الآن</a>
+                ليس لديك حساب؟ <a href="~/Home/Register">ابدأ الآن</a>
             </div>
         </form>
     </div>
@@ -264,5 +268,21 @@
                 icon.classList.replace('bi-eye-slash', 'bi-eye');
             }
         }
+
+        // JavaScript بسيط لإظهار/إخفاء كلمة المرور (ديناميكية)
+        document.querySelector('.password-toggle').addEventListener('click', function() {
+            const passwordInput = document.getElementById('Password');
+            const icon = this.querySelector('i');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('bi-eye-fill');
+                icon.classList.add('bi-eye-slash-fill');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('bi-eye-slash-fill');
+                icon.classList.add('bi-eye-fill');
+            }
+        });
     </script>
 </body>

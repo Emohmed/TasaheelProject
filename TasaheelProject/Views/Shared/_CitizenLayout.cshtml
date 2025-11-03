@@ -1,5 +1,4 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -12,7 +11,7 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/Css/Style.css">
-    
+
 </head>
 <!-- Custom CSS -->
 <body>
@@ -43,7 +42,7 @@
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
             <a class="navbar-brand fw-bold" href="#">
-               
+
 
                 <svg width="164" height="72" viewBox="0 0 164 72" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <g style="mix-blend-mode:darken">
@@ -63,7 +62,7 @@
 
 
 
-            
+
             @*
                  احفظ 
                  للتنقل بين الصفحات
@@ -81,74 +80,40 @@
                         @* احفظ
                         للتنقل بين الصفحات
                         ~/Home/HomePage *@
-                        <a class="nav-link" href="~/Home/HomePage"><i class="bi bi-house-door-fill"></i> الرئيسية</a>
+                        <a class="nav-link" href="~/Citizin/CitizenHome"><i class="bi bi-house-door-fill"></i> الرئيسية</a>
                     </li>
                     <li class="nav-item">
                         @* احفظ
                         للتنقل بين الصفحات
                         ~/Home/About *@
-                        <a class="nav-link" href="~/Home/About"><i class="bi bi-info-circle-fill"></i> معرفة المزيد</a>
+                        <a class="nav-link" href="~/Citizin/MyTransaction"><i class="bi bi-info-circle-fill"></i> متابعة معاملاتي</a>
                     </li>
                     <li class="nav-item">
                         @* احفظ
                         للتنقل بين الصفحات
                         ~/Home/ContactUs *@
-                        <a class="nav-link" href="~/Home/ContactUs"><i class="bi bi-telephone-fill"></i> الاتصال بنا</a>
+                        <a class="nav-link" href="~/Citizin/NewTransaction"><i class="bi bi-file-text-fill fs-4 me-2"></i> معاملة جديدة</a>
                     </li>
-                   
-                    @* <li class="nav-item">
-                        <a class="nav-link btn-logout" href="#"><i class="bi bi-box-arrow-right"></i> الخروج</a>
-                    </li> *@
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Home/HomePage"><i class="bi bi-box-arrow-right"></i> الخروج</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    
+
     @RenderBody()
 
 
 
     <!-- ====== ذيل الصفحة ====== -->
-    <footer class="bg-light py-3 mt-5">
+    <footer class="bg-light py-3 mt-5 mb-0">
         <div class="container text-center">
-           
+
             <p>
-                <div class="row m-2">
-                    <div class="col-2">
-                <a href="#" class="nav-link"><i class="bi bi-whatsapp"></i>واتساب</a>
-                </div>
-                </div>
-
-                <div class="row m-2">
-                    <div class="col-2">
-                <a href="#" class="nav-link"><i class="bi bi-facebook"></i>فيسبوك</a>
-                    </div>
-                </div>
-
-                <div class="row m-2">
-                    <div class="col-2">
-                <a href="#" class="nav-link"> <i class="bi bi-twitter"></i>تويتر  </a>
-                     </div>
-                </div>
-
-                <div class="row m-2">
-                    <div class="col-2">
-                <a href="#" class="nav-link "> <i class="bi bi-instagram "></i>إنستغرام</a>
-                    </div>
-                </div>
-
-                <div class="row m-2">
-                            <div class="col-2">
-                <a href="#" class="nav-link"> <i class="bi bi-youtube"></i>يوتيوب</a>
-                    </div>
-                </div>
-
-                <div class="row m-2">
-                     <div class="col-2">
-                <a href="#" class="nav-link"><i class="bi bi-google"></i> Gmail</a>
-                    </div>
-                </div>
+                
             </p>
             <p class="text-dark">© 2025 Tasahel - جميع الحقوق محفوظة</p>
         </div>

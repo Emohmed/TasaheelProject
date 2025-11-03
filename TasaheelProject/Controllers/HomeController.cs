@@ -8,6 +8,17 @@ namespace TasaheelProject.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        public IActionResult Register()
+        {
+            return View();
+        }
         public IActionResult About()
         {
             return View();

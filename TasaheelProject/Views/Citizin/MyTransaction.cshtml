@@ -1,0 +1,35 @@
+﻿@{
+    Layout = "~/Views/Shared/_CitizenLayout.cshtml";
+
+}
+@model List<TasaheelProject.Models.Request>
+
+<h2>قائمة طلباتي</h2>
+<hr />
+
+@if (Model != null && Model.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>رقم المرجع</th>
+                <th>حالة الطلب</th>
+                <th>تاريخ الإنشاء</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var request in Model)
+            {
+                <tr>
+                    <td>@request.ReferenceNumber</td>
+                    <td>@request.Status</td>
+                    <td>@request.CreatedAt?.ToShortDateString()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-info">لا توجد طلبات مسجلة حالياً.</div>
+}

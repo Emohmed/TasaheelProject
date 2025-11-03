@@ -1,0 +1,77 @@
+﻿@model List<TasaheelProject.Models.Service>
+
+@{
+    // استخدام نفس الـ Layout لضمان تناسق شكل الصفحة
+    Layout = "~/Views/Shared/_CitizenLayout.cshtml";
+    string agencyName = ViewBag.AgencyName ?? "الجهة الحكومية";
+}
+
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <a asp-controller="Citizin" asp-action="NewTransaction" class="btn btn-outline-secondary mb-3">
+            <i class="bi bi-arrow-right me-2"></i> العودة لقائمة الجهات
+        </a>
+        <h2 class="display-5 text-success fw-bold">خدمات: @agencyName</h2>
+        <p class="lead text-muted">إجمالي عدد الخدمات المتاحة: @(Model?.Count ?? 0)</p>
+    </div>
+
+    <div class="row justify-content-center">
+        @if (Model != null && Model.Count > 0)
+        {
+            @foreach (var service in Model)
+            {
+                <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+                    <div class="card shadow-sm h-100 border-success border-3">
+                        <div class="card-header bg-success text-white">
+                            <h5 class="mb-0">@service.Name</h5>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <p class="card-text text-muted flex-grow-1">
+                                <!-- افتراض أن نموذج Service يحتوي على خاصية Description -->
+                                @(string.IsNullOrEmpty(service.Description) ? "لا يتوفر وصف مفصل لهذه الخدمة." : service.Description)
+                            </p>
+                        </div>
+                        <div class="card-footer bg-light d-flex justify-content-between align-items-center">
+                            <!-- افتراض أن نموذج Service يحتوي على خاصية Fees -->
+                            <span class="text-primary fw-semibold">
+                                الرسوم: @service.Fee 
+                                دينار
+                            </span>
+
+                            <!-- زر لبدء تقديم الطلب لهذه الخدمة -->
+                            <a asp-controller="Citizin"
+                               asp-action="StartRequest"
+                               asp-route-serviceId="@service.ServiceId"
+                               class="btn btn-success btn-sm">
+                                <i class="bi bi-send me-1"></i> تقديم الطلب
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-12">
+                <div class="alert alert-info text-center py-4 border-0 shadow-sm">
+                    <h4>لا توجد خدمات متاحة لهذه الجهة حالياً.</h4>
+                    <p class="mb-0">@agencyName لم تقم بإضافة أي خدمات بعد.</p>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<!-- إضافة تنسيقات لتجميل البطاقات وجعلها أكثر استجابة -->
+<style>
+    .card-header h5 {
+        font-size: 1.25rem;
+    }
+
+    .card-text {
+        min-height: 50px; /* ضمان ارتفاع موحد للبطاقات */
+    }
+
+    .card-footer {
+        padding: 0.75rem 1.25rem;
+    }
+</style>

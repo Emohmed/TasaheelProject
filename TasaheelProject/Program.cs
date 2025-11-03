@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using TasaheelProject.Data;
+using TasaheelProject.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +12,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options =>
+builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
   { options.SignIn.RequireConfirmedAccount = false;
     options.Password.RequireDigit = false;
       options.Password.RequireLowercase = false;
@@ -19,10 +20,9 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
       options.Password.RequireNonAlphanumeric = false;
       options.Password.RequiredLength = 6;
       options.User.RequireUniqueEmail = true;
-
-
   }
   )
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 

@@ -27,31 +27,25 @@ namespace TasaheelProject.Controllers
         
         }
 
-        [HttpGet]
-        public IActionResult Login()
-        {
-            return View();
-        }
-
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewmodel us)
         {
             if (!ModelState.IsValid)
-                return View(us);
-
-           var user=await userManager.FindByEmailAsync(us.Email);
+                return View("~/Views/Home/Login.cshtml", us);
+            var user=await userManager.FindByEmailAsync(us.Email);
 
             if (user == null)
             {
                 ModelState.AddModelError("","البريد الالكتروني غير موجود");
-                return View(us);
+                return View("~/Views/Home/Login.cshtml", us);
             }
 
             if (!user.IsActive)
             {
                 ModelState.AddModelError("", "الحساب غير مفعل");
-                return View(us);
+                return View("~/Views/Home/Login.cshtml", us);
             }
             var result = await signInManager.PasswordSignInAsync(user,us.Password,false,false);
 
@@ -70,17 +64,13 @@ namespace TasaheelProject.Controllers
                 return RedirectToAction("HomePage", "Home");
             }
             ModelState.AddModelError("","فشل في تسجيل الدخول تحقق من كلمة المرور و البريد");
-            return View(us);
-        
-        }
-        [HttpGet]
-        public IActionResult Register()
-        {
-            return View();
+            return View("~/Views/Home/Login.cshtml", us);
+
         }
 
+
         [HttpPost]
-        [ValidateAntiForgeryToken]
+       
         public async Task<IActionResult> RegisterCitizen(CitizinViewmodel U) 
         {
             if (!ModelState.IsValid) 
@@ -106,6 +96,7 @@ namespace TasaheelProject.Controllers
 
                 var Citizin = new CitizenProfile()
                 {
+                    CitizenId=uc.Id,
                     NationalId = U.NationalId,
                     FullName = U.FullName,
                     DateOfBirth = U.DateOfBirth,
@@ -116,7 +107,7 @@ namespace TasaheelProject.Controllers
 
                 db.Citizens.Add(Citizin);
                 await db.SaveChangesAsync();
-                return RedirectToAction(nameof(Login));
+                return RedirectToAction("Login","Home");
             }
 
             foreach (var error in result.Errors)
