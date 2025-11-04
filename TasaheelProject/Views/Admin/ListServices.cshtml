@@ -1,0 +1,44 @@
+﻿@model IEnumerable<TasaheelProject.Data.Viewmodel.ServiceDetailsViewModel>
+
+@{
+    ViewData["Title"] = "قائمة الخدمات";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>قائمة الخدمات</h2>
+
+@* يمكنك إضافة رابط لصفحة إضافة خدمة عامة أو العودة لقائمة الجهات *@
+@* <a asp-action="CreateAgencies" class="btn btn-primary">إضافة خدمة جديدة</a> *@
+
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.Description)</th>
+            <th>@Html.DisplayNameFor(model => model.Fee)</th>
+            <th>@Html.DisplayNameFor(model => model.AgencyName)</th>
+            <th>العمليات</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                <td>@Html.DisplayFor(modelItem => item.Fee)</td>
+                <td>@Html.DisplayFor(modelItem => item.AgencyName)</td>
+                <td>
+                    @* يمكنك إضافة رابط تعديل هنا *@
+                    <a asp-action="EditService" asp-route-serviceid="@item.ServiceId" class="btn btn-warning btn-sm">تعديل</a>
+
+                    @* زر الحذف - يتطلب نموذج (Form) لأسباب أمنية (POST) *@
+                    <form asp-action="DeleteService" method="post" asp-route-serviceid="@item.ServiceId" onsubmit="return confirm('هل أنت متأكد من حذف هذه الخدمة؟');" style="display:inline;">
+                        <input type="hidden" name="id" value="@item.ServiceId" />
+                        <button type="submit" class="btn btn-danger btn-sm">حذف</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

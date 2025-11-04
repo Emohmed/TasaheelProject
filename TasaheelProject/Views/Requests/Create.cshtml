@@ -1,0 +1,83 @@
+﻿@model TasaheelProject.Data.Viewmodel.CreateRequestViewModel
+
+@{
+    // استخدام نفس الـ Layout لضمان تناسق شكل الصفحة
+    Layout = "~/Views/Shared/_CitizenLayout.cshtml";
+    ViewData["Title"] = "إنشاء طلب جديد";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-lg border-0 rounded-3">
+                <div class="card-header bg-primary text-white text-center py-3">
+                    <h2 class="mb-0 fw-bold"><i class="bi bi-file-earmark-text me-2"></i> تقديم طلب جديد</h2>
+                </div>
+
+                <div class="card-body p-4 p-md-5">
+
+                    <form asp-controller="Request" asp-action="Create" method="post">
+
+                        <!-- ملخص أخطاء النموذج (Model Summary) -->
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                        <!-- 1. اختيار الجهة الحكومية (الفرع) -->
+                        <div class="mb-4">
+                            <label asp-for="BranchId" class="form-label fw-semibold">@Html.DisplayNameFor(m => m.BranchId)</label>
+                            <select asp-for="BranchId"
+                                    asp-items="Model.BranchesList"
+                                    class="form-select form-select-lg"
+                                    aria-label="اختيار الجهة الحكومية">
+                                <option value="" selected disabled>-- اختر الجهة الحكومية --</option>
+                            </select>
+                            <span asp-validation-for="BranchId" class="text-danger"></span>
+                        </div>
+
+                        <!-- 2. اختيار الخدمة المطلوبة -->
+                        <div class="mb-4">
+                            <label asp-for="ServiceId" class="form-label fw-semibold">@Html.DisplayNameFor(m => m.ServiceId)</label>
+                            <select asp-for="ServiceId"
+                                    asp-items="Model.ServicesList"
+                                    class="form-select form-select-lg"
+                                    aria-label="اختيار الخدمة">
+                                <option value="" selected disabled>-- اختر الخدمة المطلوبة --</option>
+                            </select>
+                            <span asp-validation-for="ServiceId" class="text-danger"></span>
+                        </div>
+
+                        <!-- 3. ملاحظات إضافية (اختياري) -->
+                        <div class="mb-4">
+                            <label asp-for="UserNotes" class="form-label fw-semibold">@Html.DisplayNameFor(m => m.UserNotes)</label>
+                            <textarea asp-for="UserNotes"
+                                      class="form-control"
+                                      rows="4"
+                                      placeholder="أدخل أي ملاحظات أو تفاصيل إضافية هنا (اختياري)"></textarea>
+                            <span asp-validation-for="UserNotes" class="text-danger"></span>
+                        </div>
+
+                        <!-- زر الإرسال -->
+                        <div class="d-grid gap-2 mt-5">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="bi bi-send-fill me-2"></i> تأكيد وإرسال الطلب
+                            </button>
+                            <a asp-controller="Citizin" asp-action="NewTransaction" class="btn btn-outline-secondary">
+                                <i class="bi bi-x-circle me-2"></i> إلغاء والعودة
+                            </a>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* لتحسين شكل القوائم المنسدلة */
+    .form-select-lg {
+        padding: .75rem 1.5rem;
+        font-size: 1.1rem;
+    }
+</style>
+
+

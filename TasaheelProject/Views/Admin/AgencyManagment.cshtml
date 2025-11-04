@@ -23,9 +23,12 @@
                 <td>@item.Code</td>
                 <td>
                     <a asp-action="EditAgency" asp-route-AgencyId="@item.AgencyId" class="btn btn-warning btn-sm">تعديل</a>
-                    <a asp-action="DeleteConfirmed" asp-route-id="@item.AgencyId" class="btn btn-danger btn-sm">حذف</a>
+                    <a asp-action="DeleteConfirmed" asp-route-AgencyId="@item.AgencyId" class="btn btn-danger btn-sm">حذف</a>
                     <a asp-controller="Branches" asp-action="ManageBranches" asp-route-agencyId="@item.AgencyId" class="btn btn-primary btn-sm">
                         إدارة الفروع
+                    </a>
+                    <a asp-controller="Admin" asp-action="AddService" asp-route-agencyId="@item.AgencyId" class="btn btn-primary btn-sm">
+                        إضافة خدمة
                     </a>
                 </td>
             </tr>

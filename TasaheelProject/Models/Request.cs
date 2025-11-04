@@ -24,13 +24,13 @@ namespace TasaheelProject.Models
         public DateTime? UpdatedAt { get; set; }
 
         [ForeignKey("Branch")]
-        public Guid BranchId { get; set; }      //  هنا نربطه بالفرع
-        public Branch Branch { get; set; } = null!;
+        public Guid? BranchId { get; set; }      //  هنا نربطه بالفرع
+        public Branch? Branch { get; set; } = null!;
         public Payment? Payment { get; set; }
 
         // المستندات التي رفعها المواطن مع الطلب
-        public List<AttachmentDocument> Attachments { get; set; } = new();
-        public List<Notification> Notifications { get; set; } = new();  //  الاشعارات>
+        public List<AttachmentDocument>? Attachments { get; set; } = new();
+        public List<Notification>? Notifications { get; set; } = new();  //  الاشعارات>
 
 
 

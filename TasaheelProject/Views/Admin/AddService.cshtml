@@ -1,0 +1,49 @@
+﻿@model TasaheelProject.Data.Viewmodel.ServiceViewModel
+
+@{
+    ViewData["Title"] = "إضافة خدمة جديدة";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>إضافة خدمة جديدة للجهة</h2>
+@* يمكنك عرض اسم الجهة هنا إذا قمت بتمريره عبر ViewBag *@
+ @if (ViewBag.AgencyName != null)
+{
+    <h3>الجهة: @ViewBag.AgencyName</h3>
+} 
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddService" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            @* حقل مخفي لتخزين AgencyId - هذا هو الجزء الأساسي *@
+            <input  asp-for="AgencyId" />
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Fee" class="control-label"></label>
+                <input asp-for="Fee" class="form-control" type="number" step="0.01" />
+                <span asp-validation-for="Fee" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-3">
+                <input type="submit" value="إنشاء الخدمة" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">العودة إلى القائمة</a>
+            </div>
+        </form>
+    </div>
+</div>
+
